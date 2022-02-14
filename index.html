@@ -9,21 +9,24 @@
   <meta name="keywords" content="Mesto, интерактивная страница, добавление фото, удаление фото" />
   <meta name="author" content="Руслан Юлдашев" />
   <link rel="icon" href="./image/favicon.ico">
-  <link rel="stylesheet" href="./style/normalize.css" />
-  <link rel="stylesheet" href="./style/style.css" />
+  <link rel="stylesheet" href="./pages/index.css" />
   <title>Mesto</title>
 </head>
 
 <body class="root">
   <div class="page">
+
     <!-- Блок header -->
+
     <header class="header">
       <img src="./images/header-logo.svg" alt="Логотип" class="header__logo">
       <div class="header__line"></div>
     </header>
 
     <main>
+
       <!-- Блок profile -->
+
       <section class="profile">
         <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
         <div class="profile__info">
@@ -33,7 +36,9 @@
         </div>
         <button type="button" class="profile__add-button"></button>
       </section>
+
       <!-- Блок elements-->
+
       <section class="elements">
         <ul class="elements__list">
 
@@ -88,10 +93,34 @@
         </ul>
       </section>
 
+      <!-- Блок footer -->
+
+      <footer class="footer">
+        <p class="footer__copyright">©2022 Mesto Russia</p>
+      </footer>
+
     </main>
   </div>
 
-  <script src="./script.js"></script>
+  <!-- Блок popup -->
+
+  <!-- Модальное окно редактирования профиля -->
+  <section class="popup popup_type_edit" aria-label="Модальное окно редактирования профиля">
+    <div class="popup__container">
+      <button class="popup__close" type="button"></button>
+      <form action="#" class="popup__form edit-form">
+        <fieldset class="popup__content">
+          <legend class="popup__title">Редактировать профиль</legend>
+          <input type="text" name="name" value="Жак-Ив Кусто" autocomplete="off" class="popup__input popup__input-name">
+          <input type="text" name="post" value="Исследователь океана" autocomplete="off"
+            class="popup__input popup__input-post">
+          <button type="submit" class="popup__button">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+
+  <script src="./js/script.js"></script>
 </body>
 
 </html>
