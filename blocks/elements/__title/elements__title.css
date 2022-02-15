@@ -1,0 +1,9 @@
+.elements__title {
+  overflow: hidden;
+  margin: 0;
+  width: 80%;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  color: #000;
+}

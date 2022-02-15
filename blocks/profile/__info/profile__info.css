@@ -1,0 +1,22 @@
+.profile__info {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  -ms-grid-columns: 311px 24px;
+  grid-template-columns: 311px 24px;
+}
+
+@media (max-width: 710px) {
+  .profile__info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}

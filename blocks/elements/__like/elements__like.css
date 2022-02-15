@@ -1,0 +1,20 @@
+.elements__like {
+  margin: 0 5px;
+  border: none;
+  padding: 0;
+  width: 22px;
+  height: 19px;
+  background: url(../../../images/elements-like.svg) no-repeat center;
+  -webkit-transition: 0.3s linear;
+  -o-transition: 0.3s linear;
+  transition: 0.3s linear;
+  cursor: pointer;
+}
+
+.elements__like:hover {
+  opacity: 0.6;
+}
+
+.elements__like:active {
+  background: url(../../../images/elements-like-black.svg) no-repeat center;
+}

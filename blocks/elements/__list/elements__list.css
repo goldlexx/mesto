@@ -1,0 +1,30 @@
+.elements__list {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  grid-gap: 20px 17px;
+  grid-template-columns: repeat(auto-fit, 282px);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 919px) {
+  .elements__list {
+    grid-gap: 60px 80px;
+  }
+}
+
+@media (max-width: 711px) {
+  .elements__list {
+    grid-gap: 50px;
+  }
+}
+
+@media (max-width: 320px) {
+  .elements__list {
+    row-gap: 20px;
+  }
+}
