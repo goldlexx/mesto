@@ -37,12 +37,12 @@ git clone https://github.com/goldlexx/mesto.git
 
 ## Макеты проектной работы в Figma:
 
-* [Макет 4](https://www.figma.com/file/SLGf16iUspCIjC05qUi1dk/YP-project-4-mesto)]
+* [Макет 4](https://www.figma.com/file/SLGf16iUspCIjC05qUi1dk/YP-project-4-mesto)
 
 
 ## Чеклисты проектной работы:
 
-* [Чеклист 4](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/index.html)]
+* [Чеклист 4](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/index.html)
 
 
 
