@@ -12,7 +12,9 @@
 @media (max-width: 710px) {
   .profile__post {
   margin: 8px 0 33px;
+  width: 100%;
   font-size: 14px;
   line-height: 17px;
+  text-align: center;
   }
 }
