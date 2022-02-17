@@ -37,8 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //Обработчик открытия и закрытия модального окна
   popupTriggerEditButton.addEventListener('click', () => {
+
     nameInput.value = 'Жак-Ив Кусто';
     jobInput.value = 'Исследователь океана';
+
     openPopup(popupTypeEdit);
   });
   popupCloseBtn.addEventListener('click', () => closePopup(popupTypeEdit));
