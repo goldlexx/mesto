@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const popupTypeEdit = document.querySelector('.popup_type_edit');
   const popupCloseBtn = popupTypeEdit.querySelector('.popup__close');
   const formElement = document.querySelector('.edit-form');
-  // Поля input + элементы DOM для вставки нового value
   const nameInput = document.querySelector('.popup__input_type_name');
   const jobInput = document.querySelector('.popup__input_type_job');
   const profileName = document.querySelector('.profile__name');
@@ -38,11 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
   //Обработчик открытия и закрытия модального окна
   popupTriggerEditButton.addEventListener('click', () => {
 
-    nameInput.value = 'Жак-Ив Кусто';
-    jobInput.value = 'Исследователь океана';
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
 
     openPopup(popupTypeEdit);
   });
+
   popupCloseBtn.addEventListener('click', () => closePopup(popupTypeEdit));
 
   // Обработчик события отправки формы
