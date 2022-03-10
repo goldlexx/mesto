@@ -24,8 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const profileName = document.querySelector('.profile__name');
   const profileJob = document.querySelector('.profile__job');
   const cardsContainer = document.querySelector('.elements__list');
-  const cardsItem = document.querySelectorAll('.elements__item');
-  const cardTemplate = document.querySelector('#card').content;
+
+  // Находим элементы в карточке template
+
+
 
   // Массив с карточками
   const initialCards = [
@@ -55,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   ];
 
-  // Создаем функциональные выражения
 
   // Открываем popup редактирования профиля и вставляем данные
   const editProfile = () => {
@@ -79,21 +80,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // Создание карточки на основе шаблона template
   const createCard = (data) => {
     // Находим элементы в карточке template
+    const cardTemplate = document.querySelector('#card').content;
     const cardElement = cardTemplate.querySelector('.elements__item').cloneNode(true);
-    const cardLike = cardElement.querySelector('.elements__like');
-    const cardDelete = cardElement.querySelector('.elements__card-delete');
+    const triggerLikeCardButton = cardElement.querySelector('.elements__like');
+    const deleteButton = cardElement.querySelector('.elements__card-delete');
     const cardImage = cardElement.querySelector('.elements__image');
     const titleImage = cardElement.querySelector('.elements__title');
+
     // Наполняем карточку
-    cardImage.src = data.link;
-    cardImage.alt = data.name;
-    titleImage.textContent = data.name;
+    fillingСard(cardImage, titleImage, data);
+
     // Навешиваем обработчиков событий (лайк, удаление, открытие zoom картинки)
-    triggerCardLike(cardLike);
-    deleteOneCard(cardDelete);
+    triggerLikeCardButton.addEventListener('click', handleCardLike);
+    deleteButton.addEventListener('click', handleDeleteCard);
     openPopupZoomImage(cardImage);
     // Возвращаем карточку
     return cardElement;
+  };
+
+  // Наполнение карточки
+  const fillingСard = (cardImage, titleImage, data) => {
+    cardImage.src = data.link;
+    cardImage.alt = data.name;
+    titleImage.textContent = data.name;
   };
 
   // Добавление новой карточки в верстку
@@ -143,17 +152,13 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Переключение лайков
-  const triggerCardLike = (cardLike) => {
-    cardLike.addEventListener('click', function () {
-      cardLike.classList.toggle('elements__like_active');
-    });
+  const handleCardLike = (evt) => {
+    evt.target.classList.toggle('elements__like_active');
   };
 
   // Удаление одной карточки
-  const deleteOneCard = (cardDelete) => {
-    cardDelete.addEventListener('click', function () {
-      cardDelete.parentElement.remove();
-    });
+  const handleDeleteCard = (evt) => {
+    evt.target.closest('.elements__item').remove();
   };
 
   // Увеличение изображения при клике

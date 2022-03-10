@@ -10,7 +10,12 @@
 ## Функционал:
 
 * Открытие и закрытие модального окна
+* Добавлена форма добавления карточки (пользователь имеет возможность добавлять карточки)
 * Редактирование профиля пользователя
+* Карточки можно лайкать
+* Карточку можно удалить кликнув на иконку удаления
+* Добавлен функционал открытия попапа с картинкой
+* Все попапы плавно открываются
 
 ## Технологии:
 
@@ -28,8 +33,8 @@ git clone https://github.com/goldlexx/mesto.git
 
 ## Будущая доработка проекта будет включать в себя:
 
-*  Добавление и удаление фотографии
-* "Лайк" для фотографии
+* Разработка валидации всех форм
+* Улучшение UX при работе с попапами
 
 ## Языки:
 
@@ -38,11 +43,16 @@ git clone https://github.com/goldlexx/mesto.git
 ## Макеты проектной работы в Figma:
 
 * [Макет 4](https://www.figma.com/file/SLGf16iUspCIjC05qUi1dk/YP-project-4-mesto)
+* [Макет 5](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
 
 
 ## Чеклисты проектной работы:
 
 * [Чеклист 4](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/index.html)
+* [Чеклист 5](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-5.pdf)
+
+
+
 
 
 

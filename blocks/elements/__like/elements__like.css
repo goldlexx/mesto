@@ -5,15 +5,15 @@
   width: 23px;
   height: 19px;
   background: url(../../../images/elements-like.svg) no-repeat center;
-  -webkit-transition: 0.3s linear;
-  -o-transition: 0.3s linear;
-  transition: 0.3s linear;
+  -webkit-transition: 0.1s linear;
+  -o-transition: 0.1s linear;
+  transition: 0.1s linear;
   cursor: pointer;
 }
 
 .elements__like:hover {
   opacity: 0.6;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .elements__like:active {
