@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Создание карточки на основе шаблона template
   const createCard = (data) => {
     // Находим элементы в карточке template
-    const cardTemplate = document.querySelector('#card').content;
+    const cardTemplate = document.querySelector('.card').content;
     const cardElement = cardTemplate.querySelector('.elements__item').cloneNode(true);
     const triggerLikeCardButton = cardElement.querySelector('.elements__like');
     const deleteButton = cardElement.querySelector('.elements__card-delete');
