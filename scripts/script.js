@@ -1,34 +1,5 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
-
-  // Переменные popup
-  const popupTypeEdit = document.querySelector('.popup_type_edit');
-  const popupTypeAdd = document.querySelector('.popup_type_add');
-  const popupTypeZoomImage = document.querySelector('.popup_type_zoom-photo');
-  const popupZoomImage = document.querySelector('.popup__zoom-photo');
-  const popupZoomImageCaption = document.querySelector('.popup__caption');
-  const popupCloseBtnEdit = popupTypeEdit.querySelector('.popup__close');
-  const popupCloseBtnZoomImage = popupTypeZoomImage.querySelector('.popup__close');
-  const popupCloseBtnImage = popupTypeAdd.querySelector('.popup__close');
-  const nameInput = document.querySelector('.popup__input_type_name');
-  const jobInput = document.querySelector('.popup__input_type_job');
-  const cardNameInput = document.querySelector('.popup__input_type_card-name');
-  const cardLinkInput = document.querySelector('.popup__input_type_card-link');
-
-  // Переменные формы popup + profile + elements
-  const formEdit = document.querySelector('.edit-form');
-  const formAdd = document.querySelector('.add-form');
-  const popupTriggerEditButton = document.querySelector('.profile__edit-button');
-  const popupTriggerAddButton = document.querySelector('.profile__add-button');
-  const profileName = document.querySelector('.profile__name');
-  const profileJob = document.querySelector('.profile__job');
-  const cardsContainer = document.querySelector('.elements__list');
-
-  // Находим элементы в карточке template
-
-
-
   // Массив с карточками
   const initialCards = [
     {
@@ -57,6 +28,28 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   ];
 
+  // Переменные popup
+  const popupTypeEdit = document.querySelector('.popup_type_edit');
+  const popupTypeAdd = document.querySelector('.popup_type_add');
+  const popupTypeZoomImage = document.querySelector('.popup_type_zoom-photo');
+  const popupZoomImage = document.querySelector('.popup__zoom-photo');
+  const popupZoomImageCaption = document.querySelector('.popup__caption');
+  const popupCloseBtnEdit = popupTypeEdit.querySelector('.popup__close');
+  const popupCloseBtnZoomImage = popupTypeZoomImage.querySelector('.popup__close');
+  const popupCloseBtnImage = popupTypeAdd.querySelector('.popup__close');
+  const nameInput = document.querySelector('.popup__input_type_name');
+  const jobInput = document.querySelector('.popup__input_type_job');
+  const cardNameInput = document.querySelector('.popup__input_type_card-name');
+  const cardLinkInput = document.querySelector('.popup__input_type_card-link');
+
+  // Переменные формы popup + profile + elements
+  const formEdit = document.querySelector('.edit-form');
+  const formAdd = document.querySelector('.add-form');
+  const popupTriggerEditButton = document.querySelector('.profile__edit-button');
+  const popupTriggerAddButton = document.querySelector('.profile__add-button');
+  const profileName = document.querySelector('.profile__name');
+  const profileJob = document.querySelector('.profile__job');
+  const cardsContainer = document.querySelector('.elements__list');
 
   // Открываем popup редактирования профиля и вставляем данные
   const editProfile = () => {
@@ -94,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     triggerLikeCardButton.addEventListener('click', handleCardLike);
     deleteButton.addEventListener('click', handleDeleteCard);
     openPopupZoomImage(cardImage);
+
     // Возвращаем карточку
     return cardElement;
   };
@@ -114,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Изменение стандартного поведения браузера при редактировании профиля
-  const formSubmitHandler = (evt) => {
+  const submitProfileForm = (evt) => {
     evt.preventDefault();
     //Изменяем value на основании того, что ввел пользователь
     profileName.textContent = nameInput.value;
@@ -166,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cardImage.addEventListener('click', () => {
 
       popupZoomImage.src = cardImage.src;
+      popupZoomImage.alt = cardImage.alt;
       popupZoomImageCaption.textContent = cardImage.alt;
 
       openPopup(popupTypeZoomImage);
@@ -185,7 +180,5 @@ document.addEventListener('DOMContentLoaded', () => {
   popupCloseBtnZoomImage.addEventListener("click", () => closePopup(popupTypeZoomImage));
 
   // Обработчик событий отправки формы
-  formEdit.addEventListener('submit', formSubmitHandler);
+  formEdit.addEventListener('submit', submitProfileForm);
   formAdd.addEventListener('submit', formSubmitHandlerCard);
-
-});
