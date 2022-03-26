@@ -53,14 +53,20 @@
   <section class="popup popup_type_edit" aria-label="Модальное окно редактирования профиля">
     <div class="popup__container">
       <button class="popup__close" type="button" aria-label="Кнопка закрытия карточки"></button>
-      <form action="#" class="popup__form edit-form" name="editForm">
+      <form action="#" class="popup__form edit-form" name="editForm" novalidate>
         <fieldset class="popup__content">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" required name="name" placeholder="Введите имя" autocomplete="off"
-            class="popup__input popup__input_type_name">
-          <input type="text" required name="job" placeholder="Введите профессию" autocomplete="off"
-            class="popup__input popup__input_type_job">
-          <button type="submit" class="popup__submit-button">Сохранить</button>
+          <label class="popup__form-field">
+            <input type="text" name="name" id="name" placeholder="Введите имя" autocomplete="off"
+              class="popup__input popup__input_type_name" required minlength="2" maxlength="40">
+            <span class="popup__error" id="name-error"></span>
+          </label>
+          <label class="popup__form-field">
+            <input type="text" name="job" placeholder="Введите профессию" autocomplete="off"
+              class="popup__input popup__input_type_job" required minlength="2" maxlength="200" id="job">
+            <span class="popup__error" id="job-error">dd</span>
+          </label>
+          <button type="submit" class="popup__submit-button popup__submit-button_type_edit">Сохранить</button>
         </fieldset>
       </form>
     </div>
@@ -70,14 +76,20 @@
   <section class="popup popup_type_add" aria-label="Модальное окно добавления карточки">
     <div class="popup__container">
       <button class="popup__close" type="button" aria-label="Кнопка закрытия карточки"></button>
-      <form action="#" class="popup__form add-form" name="addForm">
+      <form action="#" class="popup__form add-form" name="addForm" novalidate>
         <fieldset class="popup__content">
           <h2 class="popup__title">Новое место</h2>
-          <input type="text" required name="cardName" placeholder="Название" autocomplete="off"
-            class="popup__input popup__input_type_card-name">
-          <input type="text" required name="cardLink" placeholder="Ссылка на картинку" autocomplete="off"
-            class="popup__input popup__input_type_card-link">
-          <button type="submit" class="popup__submit-button">Создать</button>
+          <label class="popup__form-field">
+            <input type="text" name="cardName" placeholder="Название" autocomplete="off"
+              class="popup__input popup__input_type_card-name" id="title" required minlength="1" maxlength="30" required>
+              <span class="popup__error" id="title-error"></span>
+          </label>
+          <label class="popup__form-field">
+            <input type="url" name="cardLink" placeholder="Ссылка на картинку" autocomplete="off"
+              class="popup__input popup__input_type_card-link" id="link" required>
+              <span class="popup__error" id="link-error"></span>
+          </label>
+          <button type="submit" class="popup__submit-button popup__submit-button_type_add" >Создать</button>
         </fieldset>
       </form>
     </div>
@@ -107,6 +119,9 @@
   </template>
 
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
+
+
 
 </body>
 

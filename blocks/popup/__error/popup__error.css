@@ -1,0 +1,16 @@
+.popup__error {
+  position: absolute;
+  left: 36px;
+  top: 32px;
+  max-width: 358px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #f00;
+  visibility: hidden;
+}
+
+@media (max-width: 620px) {
+  .popup__error {
+    left: 22px;
+  }
+}
