@@ -35,7 +35,7 @@
       </section>
 
       <!-- Блок elements-->
-      <section class="elements">
+      <section class="elements" aria-label="Блок с карточками">
         <ul class="elements__list"></ul>
       </section>
 
@@ -82,21 +82,22 @@
           <label class="popup__form-field">
             <input type="text" name="cardName" placeholder="Название" autocomplete="off"
               class="popup__input popup__input_type_card-name" id="title" minlength="1" maxlength="30" required>
-              <span class="popup__error" id="title-error"></span>
+            <span class="popup__error" id="title-error"></span>
           </label>
           <label class="popup__form-field">
             <input type="url" name="cardLink" placeholder="Ссылка на картинку" autocomplete="off"
               class="popup__input popup__input_type_card-link" id="link" required>
-              <span class="popup__error" id="link-error"></span>
+            <span class="popup__error" id="link-error"></span>
           </label>
-          <button type="submit" class="popup__submit-button popup__submit-button_type_add" >Создать</button>
+          <button type="submit" class="popup__submit-button popup__submit-button_type_add popup__submit-button_disabled"
+            disabled>Создать</button>
         </fieldset>
       </form>
     </div>
   </section>
 
   <!-- Модальное окно увеличения картинки при клике -->
-  <section class="popup popup_type_zoom-photo">
+  <section class="popup popup_type_zoom-photo" aria-label="Модальное окно увеличения картинки">
     <div class="popup__photo-container">
       <button type="button" class="popup__close" aria-label="Кнопка закрытия карточки"></button>
       <figure class="popup__figure">
