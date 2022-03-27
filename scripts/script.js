@@ -217,12 +217,18 @@ addCards(initialCards);
 popupTriggerEditButton.addEventListener('click', () => {
   editProfile();
   resetInputError();
+
+  popupSubmitEditProfileBtn.classList.remove('popup__submit-button_disabled');
+  popupSubmitEditProfileBtn.removeAttribute('disabled', true);
 });
 
 popupTriggerAddButton.addEventListener('click', () => {
   openPopup(popupTypeAdd);
   resetInputError();
   resetForm();
+
+  popupSubmitAddCardBtn.classList.add('popup__submit-button_disabled');
+  popupSubmitAddCardBtn.setAttribute('disabled', true);
 });
 
 // Обработчик кнопок закрытия popup
