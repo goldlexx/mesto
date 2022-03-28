@@ -223,6 +223,9 @@ popupTriggerAddButton.addEventListener('click', () => {
   openPopup(popupTypeAdd);
   resetInputError();
   resetForm();
+
+  popupSubmitAddCardBtn.classList.add('popup__submit-button_disabled');
+  popupSubmitAddCardBtn.setAttribute('disabled', true);
 });
 
 // Обработчик кнопок закрытия popup
