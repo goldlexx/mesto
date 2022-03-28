@@ -64,26 +64,23 @@ const editProfile = () => {
 // Открытие модального окна
 const openPopup = (popup) => {
   document.addEventListener('keydown', handleEscUp);
-  document.addEventListener('mousedown', handleOverlayClick);
-
   popup.classList.add('popup_opened');
 };
 
 // Закрытие модального окна
 const closePopup = (popup) => {
   document.removeEventListener('keydown', handleEscUp);
-  document.removeEventListener('mousedown', handleOverlayClick);
-
   popup.classList.remove('popup_opened');
 };
 
 
 // Закрытие popup кликом на overlay
-const handleOverlayClick = (evt) => {
-  const activePopup = document.querySelector('.popup_opened');
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closePopup(activePopup);
-  }
+const handleOverlayClick = (popup) => {
+  popup.addEventListener('mousedown', (e) => {
+    if (e.target === popup && popup.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+  });
 };
 
 // Закрытие popup кликом на esc
@@ -92,6 +89,13 @@ const handleEscUp = (evt) => {
   if (evt.key === 'Escape') {
     closePopup(activePopup);
   }
+};
+
+// Проходим по всем popup и добавляем возможность закрывать при помощи клика на overlay или esc
+const setEventListenersClosePopupOverlay = (popupCollection) => {
+  popupCollection.forEach((popup) => {
+    handleOverlayClick(popup);
+  });
 };
 
 // Создание карточки на основе шаблона template
@@ -212,6 +216,9 @@ const resetInputError = () => {
 
 // Добавляем начальные карточки в верстку
 addCards(initialCards);
+
+//Проходим по всем popup и добавляем возможность закрывать их кликом на overlay
+setEventListenersClosePopupOverlay(popupCollection);
 
 //Обработчик открытия popup изменения профиля + добавления фото
 popupTriggerEditButton.addEventListener('click', () => {
