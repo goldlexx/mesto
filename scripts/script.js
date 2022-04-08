@@ -85,8 +85,8 @@ const handleOverlayClick = (popup) => {
 
 // Закрытие popup кликом на esc
 const handleEscUp = (evt) => {
-  const activePopup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
+    const activePopup = document.querySelector('.popup_opened');
     closePopup(activePopup);
   }
 };
