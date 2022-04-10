@@ -255,4 +255,3 @@ popupCloseBtnZoomImage.addEventListener('click', () =>
 // Обработчик событий отправки формы
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 addCardForm.addEventListener('submit', handleAddCardFormSubmit);
-
