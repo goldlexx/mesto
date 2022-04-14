@@ -50,9 +50,8 @@ export default class FormValidator {
     }
   }
 
-  _setEventListeners() {
+  enableValidation() {
     this._inputList = Array.from(this._form.querySelectorAll(this._data.inputSelector));
-
     this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
@@ -61,9 +60,5 @@ export default class FormValidator {
         this._toggleButtonState();
       });
     });
-  }
-
-  enableValidation() {
-    this._setEventListeners();
   }
 }

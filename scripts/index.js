@@ -2,34 +2,7 @@
 
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
-
-// Массив с карточками
-const initialCards = [
-  {
-    name: 'Нижний Новгород',
-    link: 'https://i.ibb.co/Nrjd2h5/image.jpg',
-  },
-  {
-    name: 'Рязань',
-    link: 'https://i.ibb.co/9Y8HnZp/image.jpg',
-  },
-  {
-    name: 'Синево-Дуброво',
-    link: 'https://i.ibb.co/9HWWWRg/image.jpg',
-  },
-  {
-    name: 'Сланцы',
-    link: 'https://i.ibb.co/QjDhgj6/image.jpg',
-  },
-  {
-    name: 'Суздаль',
-    link: 'https://i.ibb.co/h1S7TnF/image.jpg',
-  },
-  {
-    name: 'Челябинск',
-    link: 'https://i.ibb.co/5Yy7wkV/image.jpg',
-  },
-];
+import initialCards from './initialCards.js';
 
 // Объект настроек с классами и селекторами для валидации
 const validationSetting = {
@@ -58,7 +31,7 @@ const cardLinkInput = document.querySelector('.popup__input_type_card-link');
 // Переменные формы popup + profile + elements
 const cardContainer = document.querySelector('.elements__list');
 const profileForm = document.querySelector('.edit-form');
-const addCardForm = document.querySelector('.add-form');
+const cardAddForm = document.querySelector('.add-form');
 const popupTriggerEditButton = document.querySelector('.profile__edit-button');
 const popupTriggerAddButton = document.querySelector('.profile__add-button');
 const profileName = document.querySelector('.profile__name');
@@ -68,8 +41,7 @@ export const popupZoomImageCaption = document.querySelector('.popup__caption');
 
 //Экземпляры класса валидации форм
 const formValidProfile = new FormValidator(validationSetting, profileForm);
-const formValidCard = new FormValidator(validationSetting, addCardForm);
-
+const formValidCard = new FormValidator(validationSetting, cardAddForm);
 
 // Создание карточки
 const renderCard = (data, container) => {
@@ -139,11 +111,13 @@ const handleAddCardFormSubmit = (evt) => {
     {
       name: cardNameInput.value,
       link: cardLinkInput.value,
-    }, cardContainer);
+    },
+    cardContainer
+  );
 
   closePopup(popupTypeAdd);
 
-  addCardForm.reset();
+  cardAddForm.reset();
 };
 
 //Добавление карточек в верстку
@@ -158,7 +132,6 @@ setEventListenersClosePopupOverlay(popupCollection);
 
 //Обработчик открытия popup изменения профиля + добавления фото
 popupTriggerEditButton.addEventListener('click', () => {
-
   nameInput.value = profileName.textContent;
   nameInput.dispatchEvent(new Event('input'));
 
@@ -188,8 +161,4 @@ popupCloseBtnZoomImage.addEventListener('click', () =>
 
 // Обработчик событий отправки формы
 profileForm.addEventListener('submit', handleProfileFormSubmit);
-addCardForm.addEventListener('submit', handleAddCardFormSubmit);
-
-
-
-
+cardAddForm.addEventListener('submit', handleAddCardFormSubmit);
