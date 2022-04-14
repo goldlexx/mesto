@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
     content="Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки" />
-  <meta name="keywords" content="Mesto, интерактивная страница, добавление фото, удаление фото" />
+  <meta name="keywords" content="Место, интерактивная страница, добавление фото, удаление фото" />
   <meta name="author" content="Руслан Юлдашев" />
   <link rel="icon" href="./images/favicon.ico">
   <link rel="stylesheet" href="./pages/index.css" />
@@ -50,7 +50,7 @@
   <!-- Блок popup -->
 
   <!-- Модальное окно редактирования профиля -->
-  <section class="popup popup_type_edit" aria-label="Модальное окно редактирования профиля">
+  <div class="popup popup_type_edit">
     <div class="popup__container">
       <button class="popup__close" type="button" aria-label="Кнопка закрытия карточки"></button>
       <form action="#" class="popup__form edit-form" name="editForm" novalidate>
@@ -64,16 +64,16 @@
           <label class="popup__form-field">
             <input type="text" name="job" placeholder="Введите профессию" autocomplete="off"
               class="popup__input popup__input_type_job" required minlength="2" maxlength="200" id="job">
-            <span class="popup__error" id="job-error">dd</span>
+            <span class="popup__error" id="job-error"></span>
           </label>
           <button type="submit" class="popup__submit-button popup__submit-button_type_edit ">Сохранить</button>
         </fieldset>
       </form>
     </div>
-  </section>
+  </div>
 
   <!-- Модальное окно добавления карточки -->
-  <section class="popup popup_type_add" aria-label="Модальное окно добавления карточки">
+  <div class="popup popup_type_add">
     <div class="popup__container">
       <button class="popup__close" type="button" aria-label="Кнопка закрытия карточки"></button>
       <form action="#" class="popup__form add-form" name="addForm" novalidate>
@@ -93,10 +93,10 @@
         </fieldset>
       </form>
     </div>
-  </section>
+  </div>
 
   <!-- Модальное окно увеличения картинки при клике -->
-  <section class="popup popup_type_zoom-photo" aria-label="Модальное окно увеличения картинки">
+  <div class="popup popup_type_zoom-photo">
     <div class="popup__photo-container">
       <button type="button" class="popup__close" aria-label="Кнопка закрытия карточки"></button>
       <figure class="popup__figure">
@@ -104,7 +104,7 @@
         <figcaption class="popup__caption"></figcaption>
       </figure>
     </div>
-  </section>
+  </div>
 
   <!-- Template шаблон -->
   <template class="card">
@@ -118,8 +118,9 @@
     </li>
   </template>
 
-  <script src="./scripts/script.js"></script>
-  <script src="./scripts/validate.js"></script>
+  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/Card.js"></script>
+  <script type="module" src="./scripts/FormValidator.js"></script>
 
 
 
