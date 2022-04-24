@@ -1,11 +1,11 @@
 'use strict';
-import { openPopup, popupZoomImage, popupZoomImageCaption, popupTypeZoomImage } from './index.js';
 
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._title = data.name;
     this._image = data.link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -41,11 +41,7 @@ export default class Card {
   }
 
   _handleCardClick() {
-    popupZoomImage.src = this._image;
-    popupZoomImage.alt = this._title;
-    popupZoomImageCaption.textContent = this._title;
-
-    openPopup(popupTypeZoomImage);
+    this._handleCardClick(this._title, this._image);
   }
 
   _setEventListeners() {
@@ -59,7 +55,7 @@ export default class Card {
     });
 
     this._element.querySelector('.elements__image').addEventListener('click', () => {
-      this._handleCardClick();
+      this._handleCardClick(this._title, this._image);
     });
 
   }

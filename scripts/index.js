@@ -16,49 +16,34 @@ const validationSetting = {
 };
 
 // Переменные popup
-const popupCollection = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll('.popup');
 const popupTypeEdit = document.querySelector('.popup_type_edit');
 const popupTypeAdd = document.querySelector('.popup_type_add');
-export const popupTypeZoomImage = document.querySelector('.popup_type_zoom-photo');
-const popupCloseBtnEdit = popupTypeEdit.querySelector('.popup__close');
-const popupCloseBtnZoomImage = popupTypeZoomImage.querySelector('.popup__close');
-const popupCloseBtnImage = popupTypeAdd.querySelector('.popup__close');
+const popupTypeZoomImage = document.querySelector('.popup_type_zoom-photo');
+const popupZoomImage = document.querySelector('.popup__zoom-photo');
+const popupZoomImageCaption = document.querySelector('.popup__caption');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 const cardNameInput = document.querySelector('.popup__input_type_card-name');
 const cardLinkInput = document.querySelector('.popup__input_type_card-link');
 
 // Переменные формы popup + profile + elements
-const cardContainer = document.querySelector('.elements__list');
+const cardsContainer = document.querySelector('.elements__list');
 const profileForm = document.querySelector('.edit-form');
 const cardAddForm = document.querySelector('.add-form');
 const popupTriggerEditButton = document.querySelector('.profile__edit-button');
 const popupTriggerAddButton = document.querySelector('.profile__add-button');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
-export const popupZoomImage = document.querySelector('.popup__zoom-photo');
-export const popupZoomImageCaption = document.querySelector('.popup__caption');
+
+
 
 //Экземпляры класса валидации форм
 const formValidProfile = new FormValidator(validationSetting, profileForm);
 const formValidCard = new FormValidator(validationSetting, cardAddForm);
 
-// Создание карточки
-const renderCard = (data, container) => {
-  const card = new Card(data, '.card');
-  const cardElement = card.generateCard();
-  container.prepend(cardElement);
-};
-
-// Добавление карточек в верстку
-const addCard = (initialCards) => {
-  initialCards.forEach((item) => {
-    renderCard(item, cardContainer);
-  });
-};
-
 // Открытие модального окна
-export const openPopup = (popup) => {
+const openPopup = (popup) => {
   document.addEventListener('keydown', handleEscUp);
   popup.classList.add('popup_opened');
 };
@@ -67,6 +52,52 @@ export const openPopup = (popup) => {
 const closePopup = (popup) => {
   document.removeEventListener('keydown', handleEscUp);
   popup.classList.remove('popup_opened');
+};
+
+const handleCardClick = (title, image) => {
+  popupZoomImage.src = image;
+  popupZoomImage.alt = title;
+  popupZoomImageCaption.textContent = title;
+
+  openPopup(popupTypeZoomImage);
+};
+
+// Закрытие popup кликом на esc
+const handleEscUp = (evt) => {
+  if (evt.key === 'Escape') {
+    const activePopup = document.querySelector('.popup_opened');
+    closePopup(activePopup);
+  }
+};
+
+const renderCard = (dataCard, cardsContainer) => {
+  cardsContainer.prepend(createCard(dataCard));
+};
+
+// Создание карточки
+const createCard = (data) => {
+  const card = new Card(data, '.card', handleCardClick);
+  const cardElement = card.generateCard();
+  return cardElement;
+
+};
+
+
+// Добавление карточек в верстку
+const addCards = (initialCards) => {
+  initialCards.forEach((item) => {
+    renderCard(item, cardsContainer);
+  });
+};
+
+const closePopupClickCross = (popups) => {
+  popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup__button-close')) {
+        closePopup(popup);
+      }
+    });
+  });
 };
 
 // Закрытие popup кликом на overlay
@@ -78,17 +109,9 @@ const handleOverlayClick = (popup) => {
   });
 };
 
-// Закрытие popup кликом на esc
-const handleEscUp = (evt) => {
-  if (evt.key === 'Escape') {
-    const activePopup = document.querySelector('.popup_opened');
-    closePopup(activePopup);
-  }
-};
-
 // Проходим по всем popup и добавляем возможность закрывать при помощи клика на overlay или esc
-const setEventListenersClosePopupOverlay = (popupCollection) => {
-  popupCollection.forEach((popup) => {
+const setEventListenersClosePopupOverlay = (popups) => {
+  popups.forEach((popup) => {
     handleOverlayClick(popup);
   });
 };
@@ -112,7 +135,7 @@ const handleAddCardFormSubmit = (evt) => {
       name: cardNameInput.value,
       link: cardLinkInput.value,
     },
-    cardContainer
+    cardsContainer
   );
 
   closePopup(popupTypeAdd);
@@ -121,43 +144,33 @@ const handleAddCardFormSubmit = (evt) => {
 };
 
 //Добавление карточек в верстку
-addCard(initialCards);
+addCards(initialCards);
 
 // Запускаем валидацию форм
 formValidProfile.enableValidation();
 formValidCard.enableValidation();
 
 //Проходим по всем popup и добавляем возможность закрывать их кликом на overlay
-setEventListenersClosePopupOverlay(popupCollection);
+setEventListenersClosePopupOverlay(popups);
+
+//Проходим по всем popup и добавляем возможность закрывать их кликом на крестик
+closePopupClickCross(popups);
 
 //Обработчик открытия popup изменения профиля + добавления фото
 popupTriggerEditButton.addEventListener('click', () => {
-  nameInput.value = profileName.textContent;
-  nameInput.dispatchEvent(new Event('input'));
 
+  nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  jobInput.dispatchEvent(new Event('input'));
+
+  formValidProfile.resetValidation();
 
   openPopup(popupTypeEdit);
 });
 
 popupTriggerAddButton.addEventListener('click', () => {
-  formValidCard.disableSubmitButton();
+  formValidCard.resetValidation();
   openPopup(popupTypeAdd);
 });
-
-// Обработчик кнопок закрытия popup
-popupCloseBtnEdit.addEventListener('click', () => {
-  closePopup(popupTypeEdit);
-});
-
-popupCloseBtnImage.addEventListener('click', () => {
-  closePopup(popupTypeAdd);
-});
-
-popupCloseBtnZoomImage.addEventListener('click', () =>
-  closePopup(popupTypeZoomImage)
-);
 
 // Обработчик событий отправки формы
 profileForm.addEventListener('submit', handleProfileFormSubmit);

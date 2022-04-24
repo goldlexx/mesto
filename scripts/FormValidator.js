@@ -26,20 +26,24 @@ export default class FormValidator {
     });
   }
 
-  disableSubmitButton() {
-    this._buttonElement.classList.add(this._data.inactiveButtonClass);
-    this._buttonElement.setAttribute('disabled', true);
-  }
-
   _toggleButtonState() {
     this._buttonElement = this._form.querySelector(this._data.submitButtonSelector);
 
     if (this._hasInvalidInput(this._inputList)) {
-      this.disableSubmitButton();
+      this._buttonElement.classList.add(this._data.inactiveButtonClass);
+      this._buttonElement.setAttribute('disabled', true);
     } else {
       this._buttonElement.classList.remove(this._data.inactiveButtonClass);
       this._buttonElement.removeAttribute('disabled', true);
     }
+  }
+
+  resetValidation() {
+    this._toggleButtonState();
+
+    this._inputList.forEach((inputELement) => {
+      this._hideInputError(inputELement);
+    });
   }
 
   _checkInputValidity(inputElement) {
