@@ -57,6 +57,7 @@ git clone https://github.com/goldlexx/mesto.git
 * [Чеклист 5](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-5.pdf)
 * [Чеклист 6](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-6.pdf)
 * [Чеклист 7](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-7.pdf)
+* [Чеклист 8](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-8.pdf)
 
 
 
