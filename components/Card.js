@@ -1,9 +1,9 @@
 'use strict';
 
 export default class Card {
-  constructor(data, cardSelector, handleCardClick) {
-    this._title = data.name;
-    this._image = data.link;
+  constructor({ name, link }, cardSelector, handleCardClick) {
+    this._title = name;
+    this._image = link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -23,7 +23,6 @@ export default class Card {
     this._setEventListeners();
 
     const imageCard = this._element.querySelector('.elements__image');
-
     imageCard.src = this._image;
     imageCard.alt = this._title;
     this._element.querySelector('.elements__title').textContent = this._title;
