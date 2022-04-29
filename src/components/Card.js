@@ -1,6 +1,5 @@
-'use strict';
-
 export default class Card {
+
   constructor({ name, link }, cardSelector, handleCardClick) {
     this._title = name;
     this._image = link;
@@ -44,7 +43,6 @@ export default class Card {
   }
 
   _setEventListeners() {
-
     this._element.querySelector('.elements__like').addEventListener('click', () => {
       this._handleCardLike();
     });
@@ -56,6 +54,5 @@ export default class Card {
     this._element.querySelector('.elements__image').addEventListener('click', () => {
       this._handleCardClick(this._title, this._image);
     });
-
   }
 }

@@ -9,7 +9,7 @@
   <meta name="keywords" content="Место, интерактивная страница, добавление фото, удаление фото" />
   <meta name="author" content="Руслан Юлдашев" />
   <link rel="icon" href="./images/favicon.ico" />
-  <link rel="stylesheet" href="./pages/index.css" />
+
   <title>Mesto</title>
 </head>
 
@@ -17,13 +17,13 @@
   <div class="page">
     <!-- Блок header -->
     <header class="header">
-      <img src="./images/header-logo.svg" alt="Логотип" class="header__logo" />
+      <img src="<%=require('./images/header-logo.svg')%>" alt="Логотип" class="header__logo" />
     </header>
 
     <main>
       <!-- Блок profile -->
       <section class="profile">
-        <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar" />
+        <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар" class="profile__avatar" />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button type="button" class="profile__edit-button" aria-label="Кнопка изменения профиля"></button>
@@ -114,8 +114,5 @@
         </div>
       </li>
   </template>
-
-  <script type="module" src="./pages/index.js"></script>
 </body>
-
 </html>

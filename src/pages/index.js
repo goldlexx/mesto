@@ -18,20 +18,29 @@ import {
   popupTriggerAddButton,
 } from '../utils/constants.js';
 
-//Экземпляры класса валидации форм
+import './index.css';
+
+// Экземпляры класса валидации форм
 const formValidProfile = new FormValidator(validationSetting, profileForm);
 const formValidCard = new FormValidator(validationSetting, cardAddForm);
 
+// Запуск валидации форм
+formValidProfile.enableValidation();
+formValidCard.enableValidation();
+
+// Создание popup для увеличения картинок при клике
 const popupTypeZoomImage = new PopupWithImage({
-  selector: '.popup_type_zoom-photo',
+  popupSelector: '.popup_type_zoom-photo',
   imageUrl: '.popup__zoom-photo',
   imageName: '.popup__caption',
 });
 
+// Функция увеличения картинки при клике
 const handleCardClick = (name, link) => {
   popupTypeZoomImage.open(name, link);
 };
 
+// Создание двух экземпляров двух popup
 const popupTypeEdit = new Popup('.popup_type_edit');
 const popupTypeAdd = new Popup('.popup_type_add');
 
