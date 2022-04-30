@@ -38,10 +38,6 @@ export default class Card {
     this._element = null;
   }
 
-  _handleCardClick() {
-    this._handleCardClick(this._title, this._image);
-  }
-
   _setEventListeners() {
     this._element.querySelector('.elements__like').addEventListener('click', () => {
       this._handleCardLike();

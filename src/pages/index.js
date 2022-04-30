@@ -40,19 +40,19 @@ const handleCardClick = (name, link) => {
   popupTypeZoomImage.open(name, link);
 };
 
-// Создание двух экземпляров двух popup
-const popupTypeEdit = new Popup('.popup_type_edit');
-const popupTypeAdd = new Popup('.popup_type_add');
+// Логика инициализации класса Card
+
+const renderCard = (data) => {
+  const card = new Card(data, '.card', handleCardClick);
+  const cardElement = card.generateCard();
+  return cardElement;
+};
 
 // Создание карточек на странице
 const createCard = new Section(
   {
     items: initialCards,
-    renderer: (item) => {
-      const card = new Card(item, '.card', handleCardClick);
-      const cardElement = card.generateCard();
-      return cardElement;
-    },
+    renderer: renderCard
   },
   '.elements__list'
 );
@@ -65,7 +65,7 @@ const userData = new UserInfo({ name: '.profile__name', job: '.profile__job' });
 
 // Добавление одной карточки в верстку
 const popupAddCard = new PopupWithForm('.popup_type_add', (data) => {
-  createCard.addItem(data);
+  createCard.addItem(renderCard(data));
 });
 
 // Редактирование карточки профиля
@@ -73,7 +73,7 @@ const popupProfile = new PopupWithForm('.popup_type_edit', (data) => {
   userData.setUserInfo(data);
 });
 
-
+popupTypeZoomImage.setEventListeners();
 popupAddCard.setEventListeners();
 popupProfile.setEventListeners();
 
@@ -85,12 +85,12 @@ popupTriggerEditButton.addEventListener('click', () => {
   nameInput.value = getUserData.name;
   jobInput.value = getUserData.job;
 
-  popupTypeEdit.open();
+  popupProfile.open();
   formValidProfile.resetValidation();
 });
 
 
 popupTriggerAddButton.addEventListener('click', () => {
   formValidCard.resetValidation();
-  popupTypeAdd.open();
+  popupAddCard.open();
 });
