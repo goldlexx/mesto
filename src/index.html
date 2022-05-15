@@ -9,7 +9,7 @@
   <meta name="keywords" content="Место, интерактивная страница, добавление фото, удаление фото" />
   <meta name="author" content="Руслан Юлдашев" />
   <link rel="icon" href="./images/favicon.ico" />
-
+  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 
@@ -17,13 +17,17 @@
   <div class="page">
     <!-- Блок header -->
     <header class="header">
-      <img src="<%=require('./images/header-logo.svg')%>" alt="Логотип" class="header__logo" />
+      <img src='./images/header-logo.svg' alt="Логотип" class="header__logo" />
     </header>
 
     <main>
       <!-- Блок profile -->
       <section class="profile">
-        <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар" class="profile__avatar" />
+        <div class="profile__author">
+        <button class="profile__edit-avatar">
+          <img src='./images/avatar.jpg' alt="Аватар" class="profile__avatar" />
+        </button>
+        </div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button type="button" class="profile__edit-button" aria-label="Кнопка изменения профиля"></button>
@@ -59,7 +63,7 @@
             <span class="popup__error" id="name-error"></span>
           </label>
           <label class="popup__form-field">
-            <input type="text" name="job" placeholder="Введите профессию" autocomplete="off"
+            <input type="text" name="about" placeholder="Введите профессию" autocomplete="off"
               class="popup__input popup__input_type_job" required minlength="2" maxlength="200" id="job" />
             <span class="popup__error" id="job-error"></span>
           </label>
@@ -95,7 +99,7 @@
   <!-- Модальное окно увеличения картинки при клике -->
   <div class="popup popup_type_zoom-photo">
     <div class="popup__photo-container">
-      <button type="button" class="popup__button-close" aria-label="Кнопка закрытия карточки"></button>
+      <button class="popup__button-close" type="button" aria-label="Кнопка закрытия popup"></button>
       <figure class="popup__figure">
         <img src="#" alt="#" class="popup__zoom-photo" />
         <figcaption class="popup__caption"></figcaption>
@@ -103,17 +107,35 @@
     </div>
   </div>
 
+  <!-- Модальное окно удаления карточки при клике -->
+  <div class="popup popup_type_confirm-delete">
+    <div class="popup__close-container">
+        <button aria-label="Закрыть" class="popup__button-close"type="button"></button>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <form class="popup__form" name="form-confirm-delete">
+            <button class="popup__submit-button" type="submit" id="delete-button">Да</button>
+        </form>
+    </div>
+</div>
+
   <!-- Template шаблон -->
   <template class="card">
       <li class="elements__item">
         <img class="elements__image" />
         <button class="elements__card-delete"></button>
+
         <div class="elements__description">
           <h2 class="elements__title"></h2>
-          <button class="elements__like"></button>
+          <div class="elements__block-like">
+            <button class="elements__like"></button>
+            <span class="elements__count-like">1</span>
+          </div>
+
         </div>
       </li>
   </template>
 
+
+  <script type="module" src="./pages/index.js"></script>
 </body>
 </html>
