@@ -43,7 +43,6 @@ export default class Api {
     });
   }
 
-
   addNewCard(data) {
     return fetch(`${this._url}cards`, {
       method: 'POST',
@@ -60,31 +59,28 @@ export default class Api {
   deleteCard(cardId) {
     return fetch(`${this._url}cards/${cardId}`, {
       method: 'DELETE',
-      headers: this._headers
-    })
-      .then(res => {
-        return this.checkError(res);
-      });
+      headers: this._headers,
+    }).then((res) => {
+      return this.checkError(res);
+    });
   }
 
   setLike(id) {
     return fetch(`${this._url}cards/likes/${id}`, {
       method: 'PUT',
-      headers: this._headers
-    })
-      .then((res) => {
-        return this.checkError(res);
-      });
+      headers: this._headers,
+    }).then((res) => {
+      return this.checkError(res);
+    });
   }
 
   removeLike(id) {
     return fetch(`${this._url}cards/likes/${id}`, {
       method: 'DELETE',
-      headers: this._headers
-    })
-      .then((res) => {
-        return this.checkError(res);
-      });
+      headers: this._headers,
+    }).then((res) => {
+      return this.checkError(res);
+    });
   }
 
   loadUserAvatar(data) {
@@ -92,15 +88,10 @@ export default class Api {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: data
-      })
-    })
-      .then((res) => {
-        return this.checkError(res);
-      });
+        avatar: data,
+      }),
+    }).then((res) => {
+      return this.checkError(res);
+    });
   }
-
-
-
 }
-

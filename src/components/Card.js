@@ -1,7 +1,13 @@
 export default class Card {
-
-  constructor({ name, link, likes, _id, owner }, cardSelector, userId, handleCardClick, handleDeleteIconClick, setLike, removeLike) {
-
+  constructor(
+    { name, link, likes, _id, owner },
+    cardSelector,
+    userId,
+    handleCardClick,
+    handleDeleteIconClick,
+    setLike,
+    removeLike
+  ) {
     this._title = name;
     this._image = link;
     this._likes = likes;
@@ -20,8 +26,7 @@ export default class Card {
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
-      .content
-      .querySelector('.elements__item')
+      .content.querySelector('.elements__item')
       .cloneNode(true);
 
     return cardElement;
@@ -35,20 +40,17 @@ export default class Card {
     const likeCount = this._element.querySelector('.elements__count-like');
     const likeBtn = this._element.querySelector('.elements__like');
 
-
     imageCard.src = this._image;
     imageCard.alt = this._title;
     this._element.querySelector('.elements__title').textContent = this._title;
 
-    // Устанавливаем количество лайков
     likeCount.textContent = this._likes.length;
-
 
     if (this._owner._id !== this._userId) {
       this._element.querySelector('.elements__card-delete').remove();
     }
 
-    if (this._likes.some(likeAuthor => likeAuthor._id === this._userId)) {
+    if (this._likes.some((likeAuthor) => likeAuthor._id === this._userId)) {
       likeBtn.classList.add('elements__like_active');
     }
 
@@ -75,21 +77,22 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._element.querySelector('.elements__card-delete').addEventListener('click', () => {
-      this._handleDeleteIconClick(this);
-    });
+    this._element
+      .querySelector('.elements__card-delete')
+      .addEventListener('click', () => {
+        this._handleDeleteIconClick(this);
+      });
 
-    this._element.querySelector('.elements__like').addEventListener('click', (evt) => {
-      this._handleCardLike(evt);
-    });
+    this._element
+      .querySelector('.elements__like')
+      .addEventListener('click', (evt) => {
+        this._handleCardLike(evt);
+      });
 
-
-
-    this._element.querySelector('.elements__image').addEventListener('click', () => {
-      this._handleCardClick(this._title, this._image);
-    });
+    this._element
+      .querySelector('.elements__image')
+      .addEventListener('click', () => {
+        this._handleCardClick(this._title, this._image);
+      });
   }
-
-
-
 }
