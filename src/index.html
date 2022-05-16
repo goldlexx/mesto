@@ -24,7 +24,7 @@
       <!-- Блок profile -->
       <section class="profile">
         <div class="profile__author">
-        <button class="profile__edit-avatar">
+        <button class="profile__edit-avatar" type="button">
           <img src='./images/avatar.jpg' alt="Аватар" class="profile__avatar" />
         </button>
         </div>
@@ -90,7 +90,7 @@
               class="popup__input popup__input_type_card-link" id="link" required />
             <span class="popup__error" id="link-error"></span>
           </label>
-          <button type="submit" class="popup__submit-button popup__submit-button_type_add">Создать</button>
+          <button type="submit" class="popup__submit-button popup__submit-button_type_add">Сохранить</button>
         </fieldset>
       </form>
     </div>
@@ -117,6 +117,24 @@
         </form>
     </div>
 </div>
+
+  <!-- Модальное окно загрузки аватара пользователя -->
+    <div class="popup popup_type_add_avatar">
+      <div class="popup__avatar-container">
+        <button class="popup__button-close" type="button" aria-label="Кнопка закрытия карточки"></button>
+        <form action="#" class="popup__form edit-avatar" name="editAvatar" novalidate>
+          <fieldset class="popup__content">
+            <h2 class="popup__title">Обновить аватар</h2>
+            <label class="popup__form-link">
+              <input type="url" name="link" placeholder="Ссылка на картинку" autocomplete="off"
+                class="popup__input popup__input_type_card-link" id="link" required />
+              <span class="popup__error" id="link-error"></span>
+            </label>
+            <button type="submit" class="popup__submit-button popup__submit-button_type_add">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
 
   <!-- Template шаблон -->
   <template class="card">
