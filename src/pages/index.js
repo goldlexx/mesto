@@ -176,8 +176,8 @@ const popupAddCard = new PopupWithForm('.popup_type_add', (data) => {
 });
 
 // Добавление аватара
-const popupAddAvatar = new PopupWithForm('.popup_type_add_avatar', (data) => {
-  renderLoading('popup_type_add_avatar', true);
+const popupAddAvatar = new PopupWithForm('.popup_type_add-avatar', (data) => {
+  renderLoading('popup_type_add-avatar', true);
   userInfo.setUserAvatar(data);
   api
     .loadUserAvatar(data.link)
@@ -188,7 +188,7 @@ const popupAddAvatar = new PopupWithForm('.popup_type_add_avatar', (data) => {
       console.log(`Ошибка загрузки аватара ${err}`);
     })
     .finally(() => {
-      renderLoading('popup_type_add_avatar', false);
+      renderLoading('popup_type_add-avatar', false);
     });
 });
 
