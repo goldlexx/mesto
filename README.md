@@ -7,26 +7,32 @@
 | **GithHub Pages** | [Проектная работа на GitHub Pages](https://goldlexx.github.io/mesto/) |
 | ----------------- | -------------------------------------------------------------------- |
 
-## Функционал:
-
-* Открытие и закрытие модального окна
-* Добавлена форма добавления карточки (пользователь имеет возможность добавлять карточки)
-* Редактирование профиля пользователя
-* Карточки можно лайкать
-* Карточку можно удалить кликнув на иконку удаления
-* Добавлен функционал открытия попапа с картинкой
-* Все попапы плавно открываются
-
-## Технологии:
-
-* Flexbox
-* Grid Layout
-* Animation and Transform using CSS
-* BEM Methodology
-* File Structure (Nested BEM)
-* Git
-* JavaScript
-* ООП
+## Примененные знания
+* Соверменная верстка с использованием Flexbox и Grid Layout
+* Семантическая верстка
+* Адаптивная верстка сайта для разных экранов (от 320 до 1280+)
+* Верстка форм (текстовые поля и кнопки)
+* Методология БЭМ
+* Базовая работа с JavaScript:
+  - работа с обработчиками событий `addEventListener`
+  - получение и вывод данных из DOM-дерева
+  - создание/удаление элементов без перезагрузки страницы
+  - валидация форм
+* Объектно-ориентированное программирование
+  - разбиение скрипта на модули с классами
+  - создание и вставка элементов на страницу
+  - слабое связывание между классами через колбек-функции
+* Сборка проекта с Webpack
+  - установка, подключение и настройка npm-модулей
+  - минификация и транспиляция JS-кода с помощью Babel
+  - обработка и минификация CSS-стилей с помощью PostCSS
+  - обработка локальных изображений
+  - деплой собранного проекта на GitHub Pages
+* Асинхронные функции
+  - колбэки
+  - промисы
+* Работа с HTTP-запросами к удаленному серверу
+  - `fetch`
 
 ## Инструкция по установке:
 
@@ -38,26 +44,15 @@ git clone https://github.com/goldlexx/mesto.git
 
 ## Будущая доработка проекта будет включать в себя:
 
-* Подключение проекта Mesto к серверу
+* Перенос проекта на React
 
 ## Языки:
 
 * JavaScript
 
-## Макеты проектной работы в Figma:
+## Макет проектной работы в Figma:
 
-* [Макет 4](https://www.figma.com/file/SLGf16iUspCIjC05qUi1dk/YP-project-4-mesto)
-* [Макет 5](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
-* [Макет 6](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
-
-
-## Чеклисты проектной работы:
-
-* [Чеклист 4](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/index.html)
-* [Чеклист 5](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-5.pdf)
-* [Чеклист 6](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-6.pdf)
-* [Чеклист 7](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-7.pdf)
-* [Чеклист 8](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-8.pdf)
+* [Макет](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
 
 
