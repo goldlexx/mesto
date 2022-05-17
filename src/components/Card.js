@@ -62,20 +62,6 @@ export default class Card {
     this._element = null;
   }
 
-  _handleCardLike(evt) {
-    if (!evt.target.classList.contains('elements__like_active')) {
-      evt.target.classList.add('elements__like_active');
-      evt.target.nextElementSibling.textContent = String(this._countLike + 1);
-      this._countLike += 1;
-      this._setLike(this._id);
-    } else {
-      evt.target.classList.remove('elements__like_active');
-      evt.target.nextElementSibling.textContent = String(this._countLike - 1);
-      this._countLike -= 1;
-      this._removeLike(this._id);
-    }
-  }
-
   _setEventListeners() {
     this._element
       .querySelector('.elements__card-delete')
@@ -86,7 +72,13 @@ export default class Card {
     this._element
       .querySelector('.elements__like')
       .addEventListener('click', (evt) => {
-        this._handleCardLike(evt);
+        if (!evt.target.classList.contains('elements__like_active')) {
+          this._setLike(this._id, evt, this._countLike);
+          this._countLike += 1;
+        } else {
+          this._removeLike(this._id, evt, this._countLike);
+          this._countLike -= 1;
+        }
       });
 
     this._element

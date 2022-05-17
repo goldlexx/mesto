@@ -58,10 +58,12 @@ const handleDeleteIconClick = (card) => {
 };
 
 // Функция делает запрос и устанавливает лайк
-const setLike = (id) => {
+const setLike = (id, evt, count) => {
   api
     .setLike(id)
     .then(() => {
+      evt.target.classList.add('elements__like_active');
+      evt.target.nextElementSibling.textContent = String(count + 1);
       console.log('Лайк поставлен');
     })
     .catch((err) => {
@@ -70,10 +72,12 @@ const setLike = (id) => {
 };
 
 // Функция делает запрос и удаляет лайк
-const removeLike = (id) => {
+const removeLike = (id, evt, count) => {
   api
     .removeLike(id)
     .then(() => {
+      evt.target.classList.remove('elements__like_active');
+      evt.target.nextElementSibling.textContent = String(count - 1);
       console.log('Лайк убран');
     })
     .catch((err) => {
@@ -129,6 +133,7 @@ const popupDeleteCard = new PopupWithSubmit(
     api
       .deleteCard(cardId)
       .then(() => {
+        popupDeleteCard._card.handleDeleteCard();
         popupDeleteCard.close();
       })
       .catch((err) => console.error(`Ошибка при удалении карточки: ${err}`));
@@ -142,6 +147,7 @@ const profileEditPopup = new PopupWithForm('.popup_type_edit', (data) => {
     .setUserInfo(data)
     .then((res) => {
       userInfo.setUserInfo(res);
+      profileEditPopup.close();
     })
     .catch((err) => {
       alert('Произошла ошибка сохранения данных');
@@ -166,6 +172,7 @@ const popupAddCard = new PopupWithForm('.popup_type_add', (data) => {
     .addNewCard(data)
     .then((res) => {
       createCard.addItem(renderCard(res));
+      popupAddCard.close();
     })
     .catch((err) => {
       console.log(`Ошибка добавления карточки ${err}`);

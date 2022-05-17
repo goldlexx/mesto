@@ -6,6 +6,11 @@ export default class FormValidator {
     this._buttonElement = this._form.querySelector(
       this._data.submitButtonSelector
     );
+
+    this._inputList = Array.from(
+      this._form.querySelectorAll(this._data.inputSelector)
+    );
+
   }
 
   _showInputError(inputElement) {
@@ -55,9 +60,7 @@ export default class FormValidator {
   }
 
   enableValidation() {
-    this._inputList = Array.from(
-      this._form.querySelectorAll(this._data.inputSelector)
-    );
+
     this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
