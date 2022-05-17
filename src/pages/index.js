@@ -189,6 +189,7 @@ const popupAddAvatar = new PopupWithForm('.popup_type_add-avatar', (data) => {
   api
     .loadUserAvatar(data.link)
     .then(() => {
+      popupAddAvatar.close();
       console.log('Загрузка аватара прошла успешно');
     })
     .catch((err) => {
