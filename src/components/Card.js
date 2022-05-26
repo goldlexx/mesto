@@ -5,8 +5,7 @@ export default class Card {
     userId,
     handleCardClick,
     handleDeleteIconClick,
-    setLike,
-    removeLike
+    handleLikeClick
   ) {
     this._title = name;
     this._image = link;
@@ -19,8 +18,7 @@ export default class Card {
 
     this._handleCardClick = handleCardClick;
     this._handleDeleteIconClick = handleDeleteIconClick;
-    this._setLike = setLike;
-    this._removeLike = removeLike;
+    this._handleLikeClick = handleLikeClick;
   }
 
   _getTemplate() {
@@ -62,6 +60,19 @@ export default class Card {
     this._element = null;
   }
 
+  setLike(isLike) {
+    const likeBtn = this._element.querySelector('.elements__like');
+    if (!isLike) {
+      likeBtn.classList.add('elements__like_active');
+      likeBtn.nextElementSibling.textContent = String(this._countLike + 1);
+      this._countLike += 1;
+    } else {
+      likeBtn.classList.remove('elements__like_active');
+      likeBtn.nextElementSibling.textContent = String(this._countLike - 1);
+      this._countLike -= 1;
+    }
+  }
+
   _setEventListeners() {
     this._element
       .querySelector('.elements__card-delete')
@@ -72,13 +83,10 @@ export default class Card {
     this._element
       .querySelector('.elements__like')
       .addEventListener('click', (evt) => {
-        if (!evt.target.classList.contains('elements__like_active')) {
-          this._setLike(this._id, evt, this._countLike);
-          this._countLike += 1;
-        } else {
-          this._removeLike(this._id, evt, this._countLike);
-          this._countLike -= 1;
-        }
+        this._handleLikeClick(
+          this,
+          evt.target.classList.contains('elements__like_active')
+        );
       });
 
     this._element

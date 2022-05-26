@@ -57,32 +57,12 @@ const handleDeleteIconClick = (card) => {
   popupDeleteCard.getIdCard(card);
 };
 
-// Функция делает запрос и устанавливает лайк
-const setLike = (id, evt, count) => {
-  api
-    .setLike(id)
-    .then(() => {
-      evt.target.classList.add('elements__like_active');
-      evt.target.nextElementSibling.textContent = String(count + 1);
-      console.log('Лайк поставлен');
+const handleLikeClick = (card, isLike) => {
+  const cardPromise = isLike ? api.removeLike(card._id) : api.setLike(card._id);
+  cardPromise.then(() => {
+    card.setLike(isLike);
     })
-    .catch((err) => {
-      console.log(`Ошибка при добавлении лайка ${err}`);
-    });
-};
-
-// Функция делает запрос и удаляет лайк
-const removeLike = (id, evt, count) => {
-  api
-    .removeLike(id)
-    .then(() => {
-      evt.target.classList.remove('elements__like_active');
-      evt.target.nextElementSibling.textContent = String(count - 1);
-      console.log('Лайк убран');
-    })
-    .catch((err) => {
-      console.log(`Ошибка при удалении лайка ${err}`);
-    });
+    .catch(err => console.log(err));
 };
 
 // Создает класс кард и карточку. При создании класса используются колбеки.
@@ -93,8 +73,7 @@ const renderCard = (data) => {
     userInfo._id,
     handleCardClick,
     handleDeleteIconClick,
-    setLike,
-    removeLike
+    handleLikeClick
   );
   const cardElement = card.generateCard();
   return cardElement;
