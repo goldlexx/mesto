@@ -48,7 +48,7 @@ git clone https://github.com/goldlexx/mesto.git
 
 ## Языки:
 
-* JavaScript
+* JavaScript ES6
 
 ## Макет проектной работы в Figma:
 
