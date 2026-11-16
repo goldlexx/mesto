@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -43,6 +44,11 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.MESTO_API_BASE_URL': JSON.stringify(
+        process.env.MESTO_API_BASE_URL || 'https://mesto.nomoreparties.co/v1/cohort-41/'
+      ),
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),

@@ -37,6 +37,15 @@
 @import url(../blocks/popup/__input/_type/popup__input_type_error.css);
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__error/_visible/popup__error_visible.css);
+
+.api-status:not([hidden]) {
+  margin: 12px auto;
+  padding: 12px 16px;
+  max-width: 880px;
+  color: #721c24;
+  background: #f8d7da;
+  text-align: center;
+}
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
 @import url(../blocks/popup/__submit-button/_disabled/popup__submit-button_disabled.css);
 @import url(../blocks/popup/__photo-container/popup__photo-container.css);

@@ -57,12 +57,18 @@ const handleDeleteIconClick = (card) => {
   popupDeleteCard.getIdCard(card);
 };
 
+function showApiError(error) {
+  const status = document.querySelector('.api-status');
+  status.textContent = error?.message || 'The Mesto API request failed.';
+  status.hidden = false;
+}
+
 const handleLikeClick = (card, isLike) => {
   const cardPromise = isLike ? api.removeLike(card._id) : api.setLike(card._id);
   cardPromise.then(() => {
     card.setLike(isLike);
     })
-    .catch(err => console.log(err));
+    .catch(showApiError);
 };
 
 // Создает класс кард и карточку. При создании класса используются колбеки.
@@ -91,9 +97,8 @@ formValidAvatar.enableValidation();
 
 // Создание экземпляра класса Api
 const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-41/',
+  url: process.env.MESTO_API_BASE_URL,
   headers: {
-    authorization: '773f7647-9f5b-47ff-aca1-eaec927fb96b',
     'Content-Type': 'application/json',
   },
 });
@@ -115,7 +120,7 @@ const popupDeleteCard = new PopupWithSubmit(
         popupDeleteCard._card.handleDeleteCard();
         popupDeleteCard.close();
       })
-      .catch((err) => console.error(`Ошибка при удалении карточки: ${err}`));
+    .catch(showApiError);
   }
 );
 
@@ -128,10 +133,7 @@ const profileEditPopup = new PopupWithForm('.popup_type_edit', (data) => {
       userInfo.setUserInfo(res);
       profileEditPopup.close();
     })
-    .catch((err) => {
-      alert('Произошла ошибка сохранения данных');
-      console.log(err);
-    })
+    .catch(showApiError)
     .finally(() => {
       renderLoading('popup_type_edit', false);
     });
@@ -153,9 +155,7 @@ const popupAddCard = new PopupWithForm('.popup_type_add', (data) => {
       createCard.addItem(renderCard(res));
       popupAddCard.close();
     })
-    .catch((err) => {
-      console.log(`Ошибка добавления карточки ${err}`);
-    })
+    .catch(showApiError)
     .finally(() => {
       renderLoading('popup_type_add', false);
     });
@@ -164,16 +164,13 @@ const popupAddCard = new PopupWithForm('.popup_type_add', (data) => {
 // Добавление аватара
 const popupAddAvatar = new PopupWithForm('.popup_type_add-avatar', (data) => {
   renderLoading('popup_type_add-avatar', true);
-  userInfo.setUserAvatar(data);
   api
     .loadUserAvatar(data.link)
-    .then(() => {
+    .then((response) => {
+      userInfo.setUserAvatar(response);
       popupAddAvatar.close();
-      console.log('Загрузка аватара прошла успешно');
     })
-    .catch((err) => {
-      console.log(`Ошибка загрузки аватара ${err}`);
-    })
+    .catch(showApiError)
     .finally(() => {
       renderLoading('popup_type_add-avatar', false);
     });
@@ -188,9 +185,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     handleUserInfo(userData);
     createCard.rendered(userCard);
   })
-  .catch((err) => {
-    console.log(`Ошибка: ${err}`);
-  });
+  .catch(showApiError);
 
 // Добавляем слушатели
 popupDeleteCard.setEventListeners();

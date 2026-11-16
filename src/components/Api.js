@@ -1,3 +1,5 @@
+import checkResponse from '../utils/checkResponse';
+
 export default class Api {
   constructor({ url, headers }) {
     this._url = url;
@@ -5,20 +7,14 @@ export default class Api {
   }
 
   checkError(res) {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
+    return checkResponse(res);
   }
 
   getUserInfo() {
     return fetch(`${this._url}users/me`, {
       method: 'GET',
       headers: this._headers,
-    }).then((res) => {
-      return this.checkError(res);
-    });
+    }).then((res) => this.checkError(res));
   }
 
   setUserInfo(data) {
@@ -29,18 +25,14 @@ export default class Api {
         name: data.name,
         about: data.about,
       }),
-    }).then((res) => {
-      return this.checkError(res);
-    });
+    }).then((res) => this.checkError(res));
   }
 
   getInitialCards() {
     return fetch(`${this._url}cards`, {
       method: 'GET',
       headers: this._headers,
-    }).then((res) => {
-      return this.checkError(res);
-    });
+    }).then((res) => this.checkError(res));
   }
 
   addNewCard(data) {
@@ -51,36 +43,28 @@ export default class Api {
         name: data.name,
         link: data.link,
       }),
-    }).then((res) => {
-      return this.checkError(res);
-    });
+    }).then((res) => this.checkError(res));
   }
 
   deleteCard(cardId) {
     return fetch(`${this._url}cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
-    }).then((res) => {
-      return this.checkError(res);
-    });
+    }).then((res) => this.checkError(res));
   }
 
   setLike(id) {
     return fetch(`${this._url}cards/likes/${id}`, {
       method: 'PUT',
       headers: this._headers,
-    }).then((res) => {
-      return this.checkError(res);
-    });
+    }).then((res) => this.checkError(res));
   }
 
   removeLike(id) {
     return fetch(`${this._url}cards/likes/${id}`, {
       method: 'DELETE',
       headers: this._headers,
-    }).then((res) => {
-      return this.checkError(res);
-    });
+    }).then((res) => this.checkError(res));
   }
 
   loadUserAvatar(data) {

@@ -1,58 +1,29 @@
-# Проектная работа: "Mesto". Создана в рамках учебы в [Яндекс.Практикум](https://praktikum.yandex.ru/) на курсе ["Веб-разработчик"](https://praktikum.yandex.ru/web/).
+# Mesto — vanilla JavaScript app
 
-## Описание:
+Mesto is a photo-sharing interface built with JavaScript modules and Webpack. User profiles and cards are loaded from the Practicum Mesto API.
 
-"Mesto" - это интерактивная страница, где пользователи могут делиться фотографиями. В работе применены расширенные возможности HTML, CSS и JavaScript.
-
-| **GithHub Pages** | [Проектная работа на GitHub Pages](https://goldlexx.github.io/mesto/) |
-| ----------------- | -------------------------------------------------------------------- |
-
-## Примененные знания
-* Соверменная верстка с использованием Flexbox и Grid Layout
-* Семантическая верстка
-* Адаптивная верстка сайта для разных экранов (от 320 до 1280+)
-* Верстка форм (текстовые поля и кнопки)
-* Методология БЭМ
-* Базовая работа с JavaScript:
-  - работа с обработчиками событий `addEventListener`
-  - получение и вывод данных из DOM-дерева
-  - создание/удаление элементов без перезагрузки страницы
-  - валидация форм
-* Объектно-ориентированное программирование
-  - разбиение скрипта на модули с классами
-  - создание и вставка элементов на страницу
-  - слабое связывание между классами через колбек-функции
-* Сборка проекта с Webpack
-  - установка, подключение и настройка npm-модулей
-  - минификация и транспиляция JS-кода с помощью Babel
-  - обработка и минификация CSS-стилей с помощью PostCSS
-  - обработка локальных изображений
-  - деплой собранного проекта на GitHub Pages
-* Асинхронные функции
-  - колбэки
-  - промисы
-* Работа с HTTP-запросами к удаленному серверу
-  - `fetch`
-
-## Инструкция по установке:
+## Run locally
 
 ```
 git clone https://github.com/goldlexx/mesto.git
+cd mesto
+npm ci
+npm run dev
 ```
-Запустите локальный сервер разработки с функцией перезагрузки в реальном времени для статических и динамических страниц - [How do you set up a local testing server? (MDN web docs)](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server)
 
+## Backend access
 
-## Будущая доработка проекта будет включать в себя:
+The app requires a compatible Mesto API for profile and card operations. No access token is embedded in the frontend source or bundle. Browser-side environment variables are public after a build; use an authorized backend or proxy to provide credentials safely. If the API is unavailable, the page shows the failed request instead of silently logging it.
 
-* Перенос проекта на React
+`MESTO_API_BASE_URL` can be set in the environment before building to point at a compatible API base URL. The default remains the historical Practicum cohort endpoint.
 
-## Языки:
+## Build
 
-* JavaScript ES6
+```sh
+npm run build
+```
 
-## Макет проектной работы в Figma:
-
-* [Макет](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+The published demo is [available on GitHub Pages](https://goldlexx.github.io/mesto/).
 
 
 
