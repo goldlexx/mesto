@@ -1,35 +1,32 @@
-# Mesto — vanilla JavaScript app
+<div align="center">
 
-Mesto is a photo-sharing interface built with JavaScript modules and Webpack. User profiles and cards are loaded from the Practicum Mesto API.
+# 📷 Mesto — vanilla JavaScript
 
-## Run locally
+Учебное приложение для работы с профилем и карточками фотографий.
 
-```
-git clone https://github.com/goldlexx/mesto.git
-cd mesto
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6-f7df1e?logo=javascript&logoColor=111)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) [![Webpack](https://img.shields.io/badge/Webpack-5-8dd6f9?logo=webpack&logoColor=111)](https://webpack.js.org/)
+
+</div>
+
+## Возможности
+
+- загрузка профиля и карточек через API;
+- редактирование профиля и аватара;
+- добавление, удаление и лайки карточек.
+
+## Запуск
+
+```bash
 npm ci
 npm run dev
 ```
 
-## Backend access
+API задаётся в конфигурации проекта. Доступность внешнего учебного API зависит от окружения.
 
-The app requires a compatible Mesto API for profile and card operations. No access token is embedded in the frontend source or bundle. Browser-side environment variables are public after a build; use an authorized backend or proxy to provide credentials safely. If the API is unavailable, the page shows the failed request instead of silently logging it.
+## Технологии
 
-`MESTO_API_BASE_URL` can be set in the environment before building to point at a compatible API base URL. The default remains the historical Practicum cohort endpoint.
+JavaScript, HTML, CSS, Webpack.
 
-## Build
+## Лицензия
 
-```sh
-npm run build
-```
-
-The published demo is [available on GitHub Pages](https://goldlexx.github.io/mesto/).
-
-
-
-
-
-
-
-
-
+Лицензия в репозитории не указана.
